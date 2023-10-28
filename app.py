@@ -7,8 +7,8 @@ from PIL import Image
 from ip_adapter.ip_adapter import IPAdapter
 
 device = "cuda"
-ipadapter_sd15_path = "/models/ip-adapter_sd15.bin"
-image_encoder_sd15_path = "/models/image_encoder/pytorch_model.bin"
+ipadapter_sd15_path = "/content/Face_Int_ip/models/ip-adapter_sd15.bin/68e1df30d760f280e578c302f1e73b37ea08654eff16a31153588047affe0058"
+image_encoder_sd15_path = "/content/Face_Int_ip/models/image_encoder/pytorch_model.bin/3d3ec1e66737f77a4f3bc2df3c52eacefc69ce7825e2784183b1d4e9877d9193"
 
 
 pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", use_safetensors=True, torch_dtype=torch.float16, variant="fp16")
