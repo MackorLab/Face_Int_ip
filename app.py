@@ -8,6 +8,10 @@ from ip_adapter.ip_adapter import IPAdapter
 
 device = "cuda"
 
+image_encoder_sd15_path = "/content/Face_Int_ip/models/image_encoder/pytorch_model.bin"
+ipadapter_sd15_path = "/content/Face_Int_ip/models/ip-adapter_sd15.bin"
+
+
 pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", use_safetensors=True, torch_dtype=torch.float16, variant="fp16")
 pipe.safety_checker = None
 pipe.feature_extractor = None
@@ -16,7 +20,7 @@ pipe.to(device)
 
 image1 = Image.open("assets/input_warrior.jpg")
 
-ip_adapter = IPAdapter(pipe, cfg.ipadapter_sd15_path, cfg.image_encoder_sd15_path, device=device)
+ip_adapter = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_sd15_path, device=device)
 
 prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
     image1,
