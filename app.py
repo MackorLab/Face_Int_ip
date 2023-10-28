@@ -16,7 +16,7 @@ pipe.to(device)
 
 image1 = Image.open("/assets/input_warrior.jpg")
 
-ip_adapter = IPAdapter(pipe, "ipdapter/model/path", "image/encoder/path", device=device)
+ip_adapter = IPAdapter(pipe, cfg.ipadapter_sd15_path, cfg.image_encoder_sd15_path, device=device)
 
 prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
     image1,
