@@ -8,7 +8,7 @@ from ip_adapter.ip_adapter import IPAdapter
 
 device = "cuda"
 
-pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", use_safetensors=True, torch_dtype=torch.float16, variant="fp16")
 pipe.safety_checker = None
 pipe.feature_extractor = None
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
