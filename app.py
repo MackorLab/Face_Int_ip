@@ -14,7 +14,7 @@ pipe.feature_extractor = None
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 pipe.to(device)
 
-image1 = Image.open("reference_image.jpg")
+image1 = Image.open("/assets/input_warrior.jpg")
 
 ip_adapter = IPAdapter(pipe, "ipdapter/model/path", "image/encoder/path", device=device)
 
