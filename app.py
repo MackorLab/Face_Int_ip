@@ -1,4 +1,4 @@
-from diffusers import StableDiffusionPipeline, DDIMScheduler
+from diffusers import DiffusionPipeline, DDIMScheduler
 
 import torch
 from PIL import Image
@@ -8,7 +8,7 @@ from ip_adapter.ip_adapter import IPAdapter
 
 device = "cuda"
 
-pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", use_safetensors=True, torch_dtype=torch.float16, variant="fp16")
 pipe.safety_checker = None
 pipe.feature_extractor = None
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
