@@ -36,4 +36,4 @@ image = pipe(
     guidance_scale=6.0,
     generator=generator,
 ).images[0]
-image.save("image.webp", lossless=True, quality=100)
+image
