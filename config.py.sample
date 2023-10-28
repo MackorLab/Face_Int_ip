@@ -1,15 +1,7 @@
-sd15_base_model_path = ""
-sdxl_base_model_path = ""
+
 
 image_encoder_sd15_path = "models/image_encoder/pytorch_model.bin"
-image_encoder_sdxl_path = ""
+
 
 ipadapter_sd15_path = "/models/ip-adapter_sd15.bin"
-ipadapter_sd15_light_path = ""
-ipadapter_sd15_plus_path = ""
-ipadapter_sd15_plus_face_path = ""
-ipadapter_sdxl_path = ""
-ipadapter_sdxl_vit_h_path = ""
-ipadapter_sdxl_plus_vit_h_path = ""
 
-controlnet_model_path = ""
