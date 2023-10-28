@@ -8,7 +8,7 @@ from ip_adapter.ip_adapter import IPAdapter
 
 device = "cuda"
 ipadapter_sd15_path = "/content/Face_Int_ip/models/ip-adapter_sd15.bin"
-image_encoder_sd15_path = "h94/ip-adapter-faceencoder"
+image_encoder_sd15_path = "/content/Face_Int_ip/models/image_encoder/"
 
 
 pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", use_safetensors=True, torch_dtype=torch.float16, variant="fp16")
