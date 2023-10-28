@@ -3,7 +3,7 @@ from diffusers import DiffusionPipeline, DDIMScheduler
 import torch
 from PIL import Image
 
-import config as cfg
+
 from ip_adapter.ip_adapter import IPAdapter
 
 device = "cuda"
