@@ -53,8 +53,8 @@ def infer(image_path, prompt, negative_prompt, height, width, steps, guide, seed
     return image
 inputs = [
     gr.inputs.Image(source="upload", type="filepath", label="Raw Image. Must Be .png"),
-    gr.inputs.Textbox(label="Prompt"),
-    gr.inputs.Textbox(label="Negative Prompt", default='(deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation, wrinkles, old face'),
+    gr.inputs.Textbox(label="Что вы хотите, чтобы ИИ генерировал"),
+    gr.inputs.Textbox(label="Что вы не хотите, чтобы ИИ генерировал", default='(deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation, wrinkles, old face'),
     gr.Slider(256, 768, 512, step=1, label='Ширина картинки'),
     gr.Slider(256, 768, 512, step=1, label='Высота картинки'),
     gr.Slider(1, 50, value=30, step=1, label='Количество итераций'),
