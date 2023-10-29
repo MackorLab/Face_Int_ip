@@ -55,7 +55,7 @@ pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch
 
 image1 = Image.open("assets/O6nQlTcLg9M.jpg")
 
-ip_adapter = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_sd15_path, device=device)
+ip_adapter = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_path, device=device)
 
 prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
     image1,
