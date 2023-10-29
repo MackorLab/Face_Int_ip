@@ -50,17 +50,30 @@ vae = AutoencoderKL.from_pretrained(vae_model_path).to(dtype=torch.float16)
 # load SD pipeline
 pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, scheduler=noise_scheduler, vae=vae, feature_extractor=None,  safety_checker=None)
 
+
+
+
 image1 = Image.open("assets/O6nQlTcLg9M.jpg")
-image1 = image1.resize((256, 256))
 
+ip_adapter = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_sd15_path, device=device)
 
+prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
+    image1,
+    prompt="Mandala, a close up of a woman wearing a headscarf, arabian beauty, karol bak uhd, very beautiful woman, orange skin. intricate, very beautiful portrait, photo of a beautiful woman, beautiful oriental woman, very extremely beautiful, beautiful arab woman, with beautiful exotic, beautiful portrait, very very beautiful woman, gorgeous woman, gorgeous beautiful woman, beautiful intricate face",
+    negative_prompt="blurry,",
+)
 
-# load ip-adapter
-ip_model = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_path, device=device)
+generator = torch.Generator().manual_seed(1)
 
+image = pipe(
+    prompt_embeds=prompt_embeds,
+    negative_prompt_embeds=negative_prompt_embeds,
+    num_inference_steps=30,
+    guidance_scale=6.0,
+    generator=generator,
+).images[0]
+image.save("image.png") 
 
+img = load_image("/content/Face_Int_ip/image.png")
+img
 
-images = ip_model.generate(pil_image=image1, num_samples=4, num_inference_steps=50, seed=420,
-        prompt="photo of a beautiful girl wearing casual shirt in a garden")
-grid = image_grid(images, 1, 4)
-grid
