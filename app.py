@@ -17,13 +17,13 @@ pipe.feature_extractor = None
 pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 pipe.to(device)
 
-image1 = Image.open("assets/input_warrior.jpg")
+image1 = Image.open("assets/O6nQlTcLg9M.jpg")
 
 ip_adapter = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_sd15_path, device=device)
 
 prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
     image1,
-    prompt="positive prompt",
+    prompt="Mandala, a close up of a woman wearing a headscarf, arabian beauty, karol bak uhd, very beautiful woman, orange skin. intricate, very beautiful portrait, photo of a beautiful woman, beautiful oriental woman, very extremely beautiful, beautiful arab woman, with beautiful exotic, beautiful portrait, very very beautiful woman, gorgeous woman, gorgeous beautiful woman, beautiful intricate face",
     negative_prompt="blurry,",
 )
 
