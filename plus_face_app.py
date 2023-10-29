@@ -11,8 +11,8 @@ from ip_adapter.ip_adapter import IPAdapter
 
 
 vae_model_path = "stabilityai/sd-vae-ft-mse"
-image_encoder_path = "/content/Face_Int_ip/models/image_encoder/model.safetensors"
-ip_ckpt = "/content/Face_Int_ip/models/ip-adapter-plus-face_sd15.bin"
+image_encoder_path = "/content/Face_Int_ip/models/image_encoder/"
+ipadapter_sd15_path = "/content/Face_Int_ip/models/ip-adapter-plus-face_sd15.bin"
 device = "cuda"
 
 
@@ -56,7 +56,7 @@ image1 = image1.resize((256, 256))
 
 
 # load ip-adapter
-ip_model = IPAdapter(pipe, image_encoder_path, ip_ckpt, device)
+ip_model = IPAdapter(pipe, ipadapter_sd15_path, image_encoder_path, device=device)
 
 
 
