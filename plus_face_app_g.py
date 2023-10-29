@@ -46,7 +46,7 @@ def infer(image_path, prompt, negative_prompt):
     
     return image
 inputs = [
-    gr.inputs.Image(type="file", label="Source Image"),
+    gr.Image(source="upload", type="filepath", label="Raw Image. Must Be .png"),
     gr.inputs.Textbox(label="Prompt"),
     gr.inputs.Textbox(label="Negative Prompt"),
 ]
