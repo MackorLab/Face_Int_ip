@@ -36,4 +36,7 @@ image = pipe(
     guidance_scale=6.0,
     generator=generator,
 ).images[0]
-image
+image.save("image.png") 
+
+img = load_image("/content/image.png")
+img
