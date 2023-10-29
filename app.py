@@ -38,5 +38,5 @@ image = pipe(
 ).images[0]
 image.save("image.png") 
 
-img = load_image("/content/image.png")
+img = load_image("/content/Face_Int_ip/image.png")
 img
