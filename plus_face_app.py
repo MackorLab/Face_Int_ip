@@ -49,7 +49,7 @@ vae = AutoencoderKL.from_pretrained(vae_model_path).to(dtype=torch.float16)
 
 # load SD pipeline
 pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, scheduler=noise_scheduler, vae=vae, feature_extractor=None,  safety_checker=None)
-
+pipe.to(device)
 
 
 
