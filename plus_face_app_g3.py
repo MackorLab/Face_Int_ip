@@ -31,7 +31,7 @@ def load_models():
     
     return pipe, image_encoder_path, ipadapter_sd15_path
 pipeline, image_encoder_path, ipadapter_sd15_path = load_models()
-def infer(image_path, prompt, negative_prompt, height, width):
+def infer(image_path, prompt, negative_prompt, height, width, steps, guide):
     source_image = Image.open(image_path)
     ip_adapter = IPAdapter(pipeline, ipadapter_sd15_path, image_encoder_path, device=device)
     prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
@@ -45,8 +45,8 @@ def infer(image_path, prompt, negative_prompt, height, width):
         negative_prompt_embeds=negative_prompt_embeds,
         height=height,
         width=width,
-        num_inference_steps=30,
-        guidance_scale=6.0,
+        num_inference_steps=steps,
+        guidance_scale=guide,
         generator=generator,
     ).images[0]
     
@@ -56,7 +56,9 @@ inputs = [
     gr.inputs.Textbox(label="Prompt"),
     gr.inputs.Textbox(label="Negative Prompt"),
     gr.Slider(256, 768, 512, step=1, label='Ширина картинки'),
-    gr.Slider(256, 768, 512, step=1, label='Высота картинки'), 
+    gr.Slider(256, 768, 512, step=1, label='Высота картинки'),
+    gr.Slider(1, 25, value=10, step=1, label='Количество итераций'),
+    gr.Slider(2, 15, value=7, label='Шкала расхождения'),
 ]
 output = gr.outputs.Image(type="numpy", label="Result")
 iface = gr.Interface(fn=infer, inputs=inputs, outputs=output, title="Stable Diffusion", article="")
