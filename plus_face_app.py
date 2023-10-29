@@ -56,7 +56,7 @@ image1 = image1.resize((256, 256))
 
 
 # load ip-adapter
-ip_model = IPAdapter(pipe, image_encoder_path, ip_ckpt, device, num_tokens=16)
+ip_model = IPAdapter(pipe, image_encoder_path, ip_ckpt, device=device)
 
 
 
