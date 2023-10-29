@@ -2,7 +2,7 @@ import torch
 from diffusers import DiffusionPipeline, StableDiffusionImg2ImgPipeline, StableDiffusionInpaintPipelineLegacy, DDIMScheduler, AutoencoderKL
 from PIL import Image
 
-from ip_adapter import IPAdapterPlus
+from ip_adapter.ip_adapter import IPAdapter
 
 
 
