@@ -57,7 +57,7 @@ inputs = [
     gr.inputs.Textbox(label="Negative Prompt", default='(deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation, wrinkles, old face'),
     gr.Slider(256, 768, 512, step=1, label='Ширина картинки'),
     gr.Slider(256, 768, 512, step=1, label='Высота картинки'),
-    gr.Slider(1, 25, value=10, step=1, label='Количество итераций'),
+    gr.Slider(1, 50, value=30, step=1, label='Количество итераций'),
     gr.Slider(2, 15, value=7, label='Шкала расхождения'),
     gr.Slider(label="Зерно", minimum=0, maximum=98765432198, step=1, randomize=True), 
 ]
