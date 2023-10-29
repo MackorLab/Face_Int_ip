@@ -51,16 +51,16 @@ vae = AutoencoderKL.from_pretrained(vae_model_path).to(dtype=torch.float16)
 pipe = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, scheduler=noise_scheduler, vae=vae, feature_extractor=None,  safety_checker=None)
 
 image1 = Image.open("assets/O6nQlTcLg9M.jpg")
-image.resize((256, 256))
+image1 = image1.resize((256, 256)
 
 
 
 # load ip-adapter
-ip_model = IPAdapterPlus(pipe, image_encoder_path, ip_ckpt, device, num_tokens=16)
+ip_model = IPAdapter(pipe, image_encoder_path, ip_ckpt, device, num_tokens=16)
 
 
 
-images = ip_model.generate(pil_image=image, num_samples=4, num_inference_steps=50, seed=420,
+images = ip_model.generate(pil_image=image1, num_samples=4, num_inference_steps=50, seed=420,
         prompt="photo of a beautiful girl wearing casual shirt in a garden")
 grid = image_grid(images, 1, 4)
 grid
