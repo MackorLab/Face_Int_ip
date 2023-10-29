@@ -43,8 +43,8 @@ def infer(image_path, prompt, negative_prompt):
     image = pipeline(
         prompt_embeds=prompt_embeds,
         negative_prompt_embeds=negative_prompt_embeds,
-        height,
-        width,
+        height=height,
+        width=width,
         num_inference_steps=30,
         guidance_scale=6.0,
         generator=generator,
