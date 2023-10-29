@@ -51,6 +51,5 @@ inputs = [
     gr.inputs.Textbox(label="Negative Prompt"),
 ]
 output = gr.outputs.Image(label="Result")
-iface = gr.Interface(fn=infer, inputs=inputs, outputs=output, title="Stable Diffusion", article="
-")
+iface = gr.Interface(fn=infer, inputs=inputs, outputs=output, title="Stable Diffusion", article="")
 iface.launch(debug=True, max_threads=True, share=True, inbrowser=True)
