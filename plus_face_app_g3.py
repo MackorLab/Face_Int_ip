@@ -62,5 +62,5 @@ inputs = [
     gr.Slider(label="Зерно", minimum=0, maximum=98765432198, step=1, randomize=True), 
 ]
 output = gr.outputs.Image(type="numpy", label="Result")
-iface = gr.Interface(fn=infer, inputs=inputs, outputs=output, title="Stable Diffusion", article="")
+iface = gr.Interface(fn=infer, inputs=inputs, outputs=output, title="DIAMONIK7777 - img2img 3D Face integrator", article="")
 iface.launch(debug=True, max_threads=True, share=True, inbrowser=True)
