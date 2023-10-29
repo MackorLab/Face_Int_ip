@@ -31,7 +31,7 @@ def load_models():
     
     return pipe, image_encoder_path, ipadapter_sd15_path
 pipeline, image_encoder_path, ipadapter_sd15_path = load_models()
-def infer(image_path, prompt, negative_prompt, height, width, steps, guide):
+def infer(image_path, prompt, negative_prompt, height, width, steps, guide, seed):
     source_image = Image.open(image_path)
     ip_adapter = IPAdapter(pipeline, ipadapter_sd15_path, image_encoder_path, device=device)
     prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
@@ -39,7 +39,7 @@ def infer(image_path, prompt, negative_prompt, height, width, steps, guide):
         prompt=prompt,
         negative_prompt=negative_prompt,
     )
-    generator = torch.Generator().manual_seed(1)
+    generator = torch.Generator(device).manual_seed(seed) 
     image = pipeline(
         prompt_embeds=prompt_embeds,
         negative_prompt_embeds=negative_prompt_embeds,
@@ -59,6 +59,7 @@ inputs = [
     gr.Slider(256, 768, 512, step=1, label='Высота картинки'),
     gr.Slider(1, 25, value=10, step=1, label='Количество итераций'),
     gr.Slider(2, 15, value=7, label='Шкала расхождения'),
+    gr.Slider(label="Зерно", minimum=0, maximum=98765432198, step=1, randomize=True), 
 ]
 output = gr.outputs.Image(type="numpy", label="Result")
 iface = gr.Interface(fn=infer, inputs=inputs, outputs=output, title="Stable Diffusion", article="")
