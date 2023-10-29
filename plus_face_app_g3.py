@@ -31,7 +31,7 @@ def load_models():
     
     return pipe, image_encoder_path, ipadapter_sd15_path
 pipeline, image_encoder_path, ipadapter_sd15_path = load_models()
-def infer(image_path, prompt, negative_prompt):
+def infer(image_path, prompt, negative_prompt, height, width):
     source_image = Image.open(image_path)
     ip_adapter = IPAdapter(pipeline, ipadapter_sd15_path, image_encoder_path, device=device)
     prompt_embeds, negative_prompt_embeds = ip_adapter.get_prompt_embeds(
