@@ -11,7 +11,7 @@ from ip_adapter.ip_adapter import IPAdapter
 
 
 vae_model_path = "stabilityai/sd-vae-ft-mse"
-image_encoder_path = "/content/Face_Int_ip/models/image_encoder/pytorch_model.bin"
+image_encoder_path = "/content/Face_Int_ip/models/image_encoder/model.safetensors"
 ip_ckpt = "/content/Face_Int_ip/models/ip-adapter-plus-face_sd15.bin"
 device = "cuda"
 
