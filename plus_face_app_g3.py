@@ -26,7 +26,7 @@ def load_models():
         steps_offset=1,
     )
     vae = AutoencoderKL.from_pretrained(vae_model_path).to(dtype=torch.float16)
-    pipe = DiffusionPipeline.from_pretrained("DmatryMakeev/ponteleich-v3", revision="fp16", torch_dtype=torch.float16, scheduler=noise_scheduler, vae=vae, feature_extractor=None, safety_checker=None)
+    pipe = DiffusionPipeline.from_pretrained("DmatryMakeev/ponteleich-v3", dtype=torch.float16, scheduler=noise_scheduler, vae=vae, feature_extractor=None, safety_checker=None)
     pipe.to(device)
     
     return pipe, image_encoder_path, ipadapter_sd15_path
