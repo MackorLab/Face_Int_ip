@@ -15,7 +15,7 @@ def image_grid(imgs, rows, cols):
 def load_models():
     vae_model_path = "stabilityai/sd-vae-ft-mse"
     image_encoder_path = "/content/Face_Int_ip/models/image_encoder/"
-    ipadapter_sd15_path = "/content/Face_Int_ip/models/ip-adapter-plus-face_sd15.bin"
+    ipadapter_sd15_path = "/content/Face_Int_ip/models/dm_ip_adapter_face.bin"
     noise_scheduler = DDIMScheduler(
         num_train_timesteps=1000,
         beta_start=0.00085,
